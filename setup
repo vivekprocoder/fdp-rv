@@ -22,12 +22,15 @@ Step 2:
 Setup Elasticsearch container and verify elastic its working
 sudo su
 sudo docker pull elasticsearch:7.2.0
+docker run -d -p 9200:9200 -p 9300:9300  -it -h elasticsearch --name elasticsearch -e "discovery.type=single-node" elasticsearch:7.2.0
+curl http://localhost:9200/
+////***********************////
+optional steps
 sudo sysctl -w vm.max_map_count=524288
 Look for any vm.max_map_count line in /etc/sysctl.conf. If you find one, set its value to 524288. If there is no such line present, add the line
 vm.max_map_count=524288
 reboot your system
-docker run -d -p 9200:9200 -p 9300:9300  -it -h elasticsearch --name elasticsearch -e "discovery.type=single-node" elasticsearch:7.2.0
-curl http://localhost:9200/
+////////////////////////
 
 
 Step 3: Setup Kibana container
@@ -37,6 +40,7 @@ curl http://localhost:9200/_cat/indices
 
 
 Step 4: Create logstash config file and use it to setup Logstash container
+sudo docker pull logstash:7.2.0
 mkdir config-dir
 vim config-dir
 add content:
