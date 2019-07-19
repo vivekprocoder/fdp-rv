@@ -6,6 +6,10 @@ echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee 
 
 sudo apt update
 
+sudo add-apt-repository ppa:webupd8team/java -y
+
+sudo apt install java-common oracle-java8-installer oracle-java8-set-default
+
 sudo apt install logstash
 
 sudo nano /etc/logstash/conf.d/logstash1.conf
