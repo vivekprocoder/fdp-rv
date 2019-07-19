@@ -9,6 +9,7 @@ sudo apt update
 sudo apt install logstash
 
 sudo nano /etc/logstash/conf.d/logstash1.conf
+/*add content from the logstash1.conf located in github repo*/
 
 sudo systemctl start logstash
 
